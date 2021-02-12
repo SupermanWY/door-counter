@@ -76,7 +76,7 @@ class Home extends React.Component {
     const fangWidth = (width - liaoWidth * (doorAmount + 1)) / doorAmount
     const upFangAmount = doorAmount
     const downFangAmount = doorAmount
-    const middleFangAmount = (banZiAmount - 1) * doorAmount
+    const middleFangAmount = this.calculateMiddleFangAmount(banZiAmount, doorAmount, liaoWidth)
     const huaWidth = width
     const banZiWidth = fangWidth + 15
     const banZiHeight = this.calculateBanZiHeight(shuKuangHeight, banZiAmount, liaoWidth)
@@ -104,6 +104,14 @@ class Home extends React.Component {
     }
 
     return shuKuangHeight - 60
+  }
+
+  calculateMiddleFangAmount(banZiAmount,doorAmount, liaoWidth) {
+    if (liaoWidth === 10) {
+      return (banZiAmount - 1) * doorAmount
+    }
+
+    return 0
   }
 
   render() {

@@ -7,7 +7,7 @@ const valMap = {
   width: '宽',
   liaoWidth: '料宽',
   doorAmount: '几扇门',
-  boardAmount: '几块板'
+  banZiAmount: '几块板'
 }
 
 function validate(fn, ctx) {
@@ -63,25 +63,25 @@ class Home extends React.Component {
       width,
       liaoWidth,
       doorAmount,
-      boardAmount
+      banZiAmount
     } = this.props.form.getFieldsValue()
     height = +height
     width = +width
     liaoWidth = liaoWidth[0]
     doorAmount = +doorAmount
-    boardAmount = +boardAmount
+    banZiAmount = +banZiAmount
 
     const shuKuangHeight = height - 35
     const shuKuangAmount = doorAmount * 2
     const fangWidth = (width - liaoWidth * (doorAmount + 1)) / doorAmount
     const upFangAmount = doorAmount
     const downFangAmount = doorAmount
-    const middleFangAmount = boardAmount - 1
+    const middleFangAmount = (banZiAmount - 1) * doorAmount
     const huaWidth = width
     const banZiWidth = fangWidth + 15
-    const banZiHeight = this.calculateBanZiHeight(shuKuangHeight, boardAmount, liaoWidth)
+    const banZiHeight = this.calculateBanZiHeight(shuKuangHeight, banZiAmount, liaoWidth)
     const huaLunAmount = doorAmount
-    const maoTiaoLength = boardAmount * height
+    const maoTiaoLength = shuKuangAmount * height
 
     this.setState(toFix2({
       shuKuangHeight,
@@ -98,9 +98,9 @@ class Home extends React.Component {
     }))
   }, this)
 
-  calculateBanZiHeight(shuKuangHeight, boardAmount, liaoWidth) {
+  calculateBanZiHeight(shuKuangHeight, banZiAmount, liaoWidth) {
     if (liaoWidth === 10) {
-      return shuKuangHeight - (boardAmount + 1) * 2
+      return shuKuangHeight - (banZiAmount + 1) * 2
     }
 
     return shuKuangHeight - 60
@@ -139,7 +139,7 @@ class Home extends React.Component {
           moneyKeyboardAlign="right"
         >几扇门</InputItem>
         <InputItem
-          {...getFieldProps('boardAmount')}
+          {...getFieldProps('banZiAmount')}
           clear
           type="money"
           moneyKeyboardAlign="right"

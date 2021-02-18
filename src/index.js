@@ -11,10 +11,10 @@ import { BrowserRouter, Route } from 'react-router-dom'
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename="/door-counter">
-      <Route exact path="/" component={Home}></Route>
-      <Route exact path="/YiMen" component={YiMen}></Route>
-      <Route exact path="/buXiuGang" component={BuXiuGang}></Route>
-      <Route exact path="/LvXingCai" component={LvXingCai}></Route>
+      <Route exact path="/" component={Home} onEnter={() => document.title="材料计算器"}></Route>
+      <Route exact path="/YiMen" component={YiMen} onEnter={() => document.title="移门"}></Route>
+      <Route exact path="/buXiuGang" component={BuXiuGang} onEnter={() => document.title="不锈钢"}></Route>
+      <Route exact path="/LvXingCai" component={LvXingCai} onEnter={() => document.title="铝型材"}></Route>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
